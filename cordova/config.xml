@@ -16,13 +16,41 @@
 	
 	<plugin name="cordova-plugin-media" version="2.3.0" />
 	
-	<platform name="android">
-        <icon src="res/drawable-mdpi/ic_game.png" density="mdpi" />
-        <icon src="res/drawable-hdpi/ic_game.png" density="hdpi" />
-        <icon src="res/drawable-xhdpi/ic_game.png" density="xhdpi" />
-        <icon src="res/drawable-xxhdpi/ic_game.png" density="xxhdpi" />
-        <icon src="res/drawable-xxxhdpi/ic_game.png" density="xxxhdpi" />
-    </platform> 
+  <platform name="ios">
+        <!-- iOS 8.0+ -->
+        <icon src="ios/AppIcon.appiconset/Icon-60@3x.png" width="180" height="180" />
+        <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="ios/Icon-60.png" width="60" height="60" />
+        <icon src="ios/AppIcon.appiconset/Icon-60@2x.png" width="120" height="120" />
+        <!-- iPad -->
+        <icon src="ios/AppIcon.appiconset/Icon-76.png" width="76" height="76" />
+        <icon src="ios/AppIcon.appiconset/Icon-76@2x.png" width="152" height="152" />
+        <!-- iOS 6.1 -->
+        <!-- Spotlight Icon -->
+        <icon src="ios/AppIcon.appiconset/Icon-40.png" width="40" height="40" />
+        <icon src="ios/AppIcon.appiconset/Icon-40@2x.png" width="80" height="80" />
+        <!-- iPhone / iPod Touch -->
+        <icon src="ios/Icon.png" width="57" height="57" />
+        <icon src="ios/Icon@2x.png" width="114" height="114" />
+        <!-- iPad -->
+        <icon src="ios/Icon-72.png" width="72" height="72" />
+        <icon src="ios/Icon-72@2x.png" width="144" height="144" />
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="ios/AppIcon.appiconset/Icon-Small.png" width="29" height="29" />
+        <icon src="ios/AppIcon.appiconset/Icon-Small@2x.png" width="58" height="58" />
+        <!-- iPad Spotlight and Settings Icon -->
+        <icon src="ios/Icon-Small-50.png" width="50" height="50" />
+        <icon src="ios/Icon-Small-50@2x.png" width="100" height="100" />
+    </platform>
+ 
+    <platform name="android">
+        <icon src="android/mdpi/ic_launcher.png" density="mdpi" />
+        <icon src="android/hdpi/ic_launcher.png" density="hdpi" />
+        <icon src="android/xhdpi/ic_launcher.png" density="xhdpi" />
+        <icon src="android/xxhdpi/ic_launcher.png" density="xxhdpi" />
+        <icon src="android/xxxhdpi/ic_launcher.png" density="xxxhdpi" />
+    </platform>
     
 	<access origin="*" />
  

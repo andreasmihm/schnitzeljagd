@@ -86,9 +86,7 @@ var buttonRestart = new tabris.Button({
 }).on("select", function() {
   aktuelleAufgabe = 0;
   pruefeAntwort();
-  var media = new Media(tabris.app.getResourceLocation("audio/rosa.mp3"));
-  media.play();
-
+  console.log(tabris.app.getResourceLocation("audio/rosa.mp3"));
 }).appendTo(page);
 
 
@@ -108,10 +106,15 @@ function pruefeAntwort() {
     if (antworten[aktuelleAufgabe] != antwort.get("text").toLowerCase()) {
       // antwort falsch
       ergebnis.set("text","Das ist leider falsch!");
+      var media = new Media(tabris.app.getResourceLocation("audio/falsch.mp3"));
+      media.play();
     } else {
       // antwort richtig
       ergebnis.set("text","Super, das ist richtig!");
       button.set("text","Weiter");
+      var media = new Media(tabris.app.getResourceLocation("audio/richtig.mp3"));
+      media.play();
+
     }
   } 
 }
