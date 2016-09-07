@@ -90,6 +90,20 @@ var buttonRestart = new tabris.Button({
 }).appendTo(page);
 
 
+function getMp3URL(filename) {
+
+
+    var path = tabris.app.getResourceLocation("audio/"+filename);
+    console.log(path);
+  // According to Media plugin documentation the media path must be
+  // relative to the "www" folder under iOS
+  if (tabris.device.get("platform") === "iOS" && path.indexOf("/www/") > 0) {
+    path = path.substr(path.indexOf("/www/") + 5);
+  }
+  console.log(path);
+  return path;
+}
+
 
 function pruefeAntwort() {
 
@@ -106,13 +120,13 @@ function pruefeAntwort() {
     if (antworten[aktuelleAufgabe] != antwort.get("text").toLowerCase()) {
       // antwort falsch
       ergebnis.set("text","Das ist leider falsch!");
-      var media = new Media(tabris.app.getResourceLocation("audio/falsch.mp3"));
+      var media = new Media(getMp3URL("falsch.mp3"));
       media.play();
     } else {
       // antwort richtig
       ergebnis.set("text","Super, das ist richtig!");
       button.set("text","Weiter");
-      var media = new Media(tabris.app.getResourceLocation("audio/richtig.mp3"));
+      var media = new Media(getMp3URL("richtig.mp3"));
       media.play();
 
     }
