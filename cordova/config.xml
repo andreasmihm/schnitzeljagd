@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget
+    id="com.mihm.schnitzeljagd"
+    version="1.0.0"
+    xmlns:gap="http://phonegap.com/ns/1.0"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
+ 
+    <name>Schnitzeljagd</name>
+    <description>
+        Schnitzeljagd
+    </description>
+    <author email="andreas.mihm@gmx.de" href="http://www.me.me">
+        Andreas Mihm
+    </author>
+	
+	<platform name="android">
+        <icon src="res/drawable-mdpi/ic_game.png" density="mdpi" />
+        <icon src="res/drawable-hdpi/ic_game.png" density="hdpi" />
+        <icon src="res/drawable-xhdpi/ic_game.png" density="xhdpi" />
+        <icon src="res/drawable-xxhdpi/ic_game.png" density="xxhdpi" />
+        <icon src="res/drawable-xxxhdpi/ic_game.png" density="xxxhdpi" />
+    </platform> 
+    
+	<access origin="*" />
+ 
+    <preference name="EnableDeveloperConsole" value="true"/>
+</widget>
