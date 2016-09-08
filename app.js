@@ -24,6 +24,8 @@ var imageView = new tabris.ImageView({
   image: getImage(aktuelleAufgabe),
   background: "rgb(220, 220, 220)",
   layoutData: {top: 60, centerX: 0}
+}).on("tap", function() {
+   playSound();
 }).appendTo(page);
 
 
@@ -31,10 +33,21 @@ var imageView = new tabris.ImageView({
 
 var fragen = ["", 
               "Findet diesem geheimen Ort!, Wenn Ihr dort seid, schaut über das Tal und sagt mir, welche Burg ihr seht.", 
-              "Super, findet nun diese Bank und schaut von dort wieder hinunter. Wie heißt das Tal vor Euch?"];
+              "Super, findet nun diese Bank und schaut von dort wieder hinunter. Wie heißt das Tal vor Euch?",
+              "Toll, das nächste Ziel ist nicht so weit, sucht also diesen Waldeingang und sagt mir welcher Ortsname auf der Bank steht.",
+              "Herzlich willkommen im Wald. Wisst Ihr auch, wo dieser Hexenbaum steht? Er ist nicht weit. Sucht ihn und sagt mir dann, was es für ein Baum ist!",
+              "Ich hoffe, die hexe hat Euch nicht gefangen. Geht also schnell weiter und sucht die Traubeneiche. Welche Tiere wurden im Mittelalter hier her getrieben?",
+              "Ihr kennt Euch ja im Wald gut aus. Könnt Ihr mir auch sagen, welcher Baum das hier ist?",
+              "Geht nun weiter und sucht dieses Tor mitten im Wald. Was verbiurgt sich denn hinter dem Tor?"
+              ];
 var antworten = ["", 
                  "kunitzburg", 
-                 "rautal"];
+                 "rautal",
+                 "closewitz",
+                 "linde",
+                 "schweine",
+                 "esche",
+                 "sportplatz"];
 //var images = [{src: "images/frage0.jpg", scale: 3}, {src: "images/frage1.jpg", scale: 3}, {src: "images/frage3.jpg", scale: 3}];
 
 
@@ -51,21 +64,21 @@ function getImage(index) {
 
 
 var frage = tabris.create("TextView", {
-  layoutData: {left: 10, top: 320, right: 10},
+  layoutData: {left: 10, top: 360, right: 10},
   text: fragen[aktuelleAufgabe],
   alignment: "left"
 }).appendTo(page);
 
 
 var antwort = new tabris.TextInput({
-  layoutData: {top: 400, left: "10%", right: "10%"},
+  layoutData: {top: 440, left: "10%", right: "10%"},
   message: "Antwort"
 }).appendTo(page);
 
 
 
 var button = new tabris.Button({
-  layoutData: {top: 450, left: "10%", right: "10%"},
+  layoutData: {top: 490, left: "10%", right: "10%"},
   text: "Starten"
 }).on("select", function() {
   pruefeAntwort();
@@ -74,14 +87,14 @@ var button = new tabris.Button({
 
 
 var ergebnis = tabris.create("TextView", {
-  layoutData: {top: 510, left: "10%", right: "10%"},
+  layoutData: {top: 550, left: "10%", right: "10%"},
   text: "",
   alignment: "left"
 }).appendTo(page);
 
 
 var buttonRestart = new tabris.Button({
-  layoutData: {top: 550, left: "10%", right: "10%"},
+  layoutData: {top: 590, left: "10%", right: "10%"},
   text: "Von vorne"
 }).on("select", function() {
   aktuelleAufgabe = 0;
@@ -92,7 +105,6 @@ var buttonRestart = new tabris.Button({
 
 function getMp3URL(filename) {
 
-
     var path = tabris.app.getResourceLocation("audio/"+filename);
     console.log(path);
   // According to Media plugin documentation the media path must be
@@ -102,6 +114,11 @@ function getMp3URL(filename) {
   }
   console.log(path);
   return path;
+}
+
+function playSound() {
+      var media = new Media(getMp3URL("frage"+ aktuelleAufgabe + ".mp3"));
+      media.play();
 }
 
 
