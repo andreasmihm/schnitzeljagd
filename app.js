@@ -3,7 +3,7 @@ var round = 0;
 var bestclick = 1000;
 
 var page = tabris.create("Page", {
-  title: "Schnitzeljagd",
+  title: "Rosas Schnitzeljagd",
   topLevel: true
 });
 
