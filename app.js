@@ -50,41 +50,57 @@ var fragen = ["",
               "Jetzt wieder eine leichte Frage für Euch Waldforscher: Welcher Baum hat denn diese Blätter und Früchte?",
               "Begebt Euch jetzt zu diesem Ort. Wenn Ihr dort seid, findet heraus, wie man diesen Ort nennt.",
               "Welches besondere Insekt lebt hier?",
-              "Die Erdkröte besucht den Tümpel auch manchmal. Womit fängt sie ihre Beute?"
+              "Die Erdkröte besucht den Tümpel auch manchmal. Womit fängt sie ihre Beute?",
+              "Sehr gut, Ihr habt alle Fragen richtig beantwortet. Geht nun zum Süßigkeitenschatz. Habt Ihr Euch alle Buchstaben notiert? Dann dürft Ihr jetzt das Lösungswort eingeben. Wenn es richtig ist, öffnet sich der Süßigkeitenschatz"
               ];
 var antworten = ["", 
                  "kunitzburg", 
-                 "rautal",
+                 "rautal",            //l
                  "closewitz",
                  "linde",
                  "schweine",
                  "esche",
-                 "sportplatz",
-                 "grünspecht",
-                 "kolkrabe",
-                 "eichelhäher",
-                 "fliegenpilz",
-                 "nein",
+                 "sportplatz",        //a 
+                 "grünspecht",        //g
+                 "kolkrabe",          //e
+                 "eichelhäher",       //r
+                 "fliegenpilz",       //f
+                 "nein",              
                  "pfifferling",
                  "ja",
                  "eiche",
-                 "tümpel",
+                 "tümpel",            //e
                  "libelle",
-                 "schleuderzunge"];
-//var images = [{src: "images/frage0.jpg", scale: 3}, {src: "images/frage1.jpg", scale: 3}, {src: "images/frage3.jpg", scale: 3}];
+                 "schleuderzunge",    //uer
+                 "lagerfeuer"];    
+
+
+var ergebnisTexte = ["", 
+                 "Super, das ist richtig!", 
+                 "Richtig, merke Dir bitte den letzten Buchstaben.",
+                 "Super, das ist richtig!",
+                 "Super, das ist richtig!",
+                 "Super, das ist richtig!",
+                 "Super, das ist richtig!",
+                 "Richtig, merke Dir bitte den achten Buchstaben.",        //a 
+                 "Richtig, merke Dir bitte den ersten Buchstaben.",        //g
+                 "Richtig, merke Dir bitte den letzten Buchstaben.",          //e
+                 "Richtig, merke Dir bitte den letzten Buchstaben.",       //r
+                 "Richtig, merke Dir bitte den ersten Buchstaben.",       //f
+                 "Super, das ist richtig!",              
+                 "Super, das ist richtig!",
+                 "Super, das ist richtig!",
+                 "Super, das ist richtig!",
+                 "Richtig, merke Dir bitte den fünften Buchstaben.",      //e
+                 "Super, das ist richtig!",
+                 "Richtig, merke Dir bitte die Buchstaben 6, 8 und 9.",   //uer
+                 "Hurra, das war richtig! Lasst es Euch schmecken!"];    
 
 
 function getImage(index) {
   var imagesrc = "images/frage" + index + ".jpg";
   return {src: imagesrc, scale: 2};
 }
-
-/*
-function getImage(index) {
-  return images[index];
-}
-*/
-
 
 var frage = tabris.create("TextView", {
   layoutData: {left: 10, top: 360, right: 10},
@@ -102,7 +118,7 @@ var antwort = new tabris.TextInput({
 
 var button = new tabris.Button({
   layoutData: {top: 490, left: "10%", right: "10%"},
-  text: "Starten"
+  text: "Prüfe Antwort"
 }).on("select", function() {
   pruefeAntwort();
 
@@ -164,9 +180,14 @@ function pruefeAntwort() {
       playSound("falsch.mp3");
     } else {
       // antwort richtig
-      ergebnis.set("text","Super, das ist richtig!");
-      button.set("text","Weiter");
-      playSound("richtig.mp3");
+      ergebnis.set("text",ergebnisTexte[aktuelleAufgabe]);
+      if (aktuelleAufgabe == 19) {
+        playSound("cheerleader.mp3");
+        button.dispose();
+      } else {
+        button.set("text","Weiter");
+        playSound("richtig.mp3");
+      }
     }
   } 
 }
