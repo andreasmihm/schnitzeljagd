@@ -8,6 +8,7 @@ var page = tabris.create("Page", {
 });
 
 var aktuelleAufgabe = 0;
+var media = new Media(getMp3URL("richtig.mp3"));
 
 if (!isNaN(parseInt(localStorage.getItem("aktuelleAufgabe")))) {
   aktuelleAufgabe = parseInt(localStorage.getItem("aktuelleAufgabe"));
@@ -25,7 +26,7 @@ var imageView = new tabris.ImageView({
   background: "rgb(220, 220, 220)",
   layoutData: {top: 60, centerX: 0}
 }).on("tap", function() {
-   playSound();
+   playSound("frage"+ aktuelleAufgabe + ".mp3");
 }).appendTo(page);
 
 
@@ -38,7 +39,18 @@ var fragen = ["",
               "Herzlich willkommen im Wald. Wisst Ihr auch, wo dieser Hexenbaum steht? Er ist nicht weit. Sucht ihn und sagt mir dann, was es für ein Baum ist!",
               "Ich hoffe, die hexe hat Euch nicht gefangen. Geht also schnell weiter und sucht die Traubeneiche. Welche Tiere wurden im Mittelalter hier her getrieben?",
               "Ihr kennt Euch ja im Wald gut aus. Könnt Ihr mir auch sagen, welcher Baum das hier ist?",
-              "Geht nun weiter und sucht dieses Tor mitten im Wald. Was verbiurgt sich denn hinter dem Tor?"
+              "Geht nun weiter und sucht dieses Tor mitten im Wald. Was verbirgt sich denn hinter dem Tor?",
+              "Kennt Ihr auch die Vögel des Waldes? Findet zuerst die Hinweistafel zu den Waldvögeln und sagt mir dann, wem diese Vogelstimme hier gehört",
+              "Das ging ja gut. Und wem gehört diese Stimme?",
+              "Dann habe ich noch eine Frage für Euch Vogelexperten: Welcher Waldvogel trägt blauweise Federn an seinen Flügeln?",
+              "Kennt Ihr Euch auch mit den Pilzen des Waldes aus? Welcher Pilz ist das hier?",
+              "Das war richtig. Kann man den Fliegenpilz essen?",
+              "Das war noch leicht. Kennt Ihr auch diesen Pilz? Sein Name ist so ähnlich wie ein Geräusch, das man mit dem Mund machen kann.",
+              "Die Pilze habt Ihr jetzt geschafft. Geht nun zu dieser kleinen Brücke. Wenn Ihr dort seid, zählt bitte nach, ob ihr niemanden verloren habt. Sind noch alle da?",
+              "Jetzt wieder eine leichte Frage für Euch Waldforscher: Welcher Baum hat denn diese Blätter und Früchte?",
+              "Begebt Euch jetzt zu diesem Ort. Wenn Ihr dort seid, findet heraus, wie man diesen Ort nennt.",
+              "Welches besondere Insekt lebt hier?",
+              "Die Erdkröte besucht den Tümpel auch manchmal. Womit fängt sie ihre Beute?"
               ];
 var antworten = ["", 
                  "kunitzburg", 
@@ -47,7 +59,18 @@ var antworten = ["",
                  "linde",
                  "schweine",
                  "esche",
-                 "sportplatz"];
+                 "sportplatz",
+                 "grünspecht",
+                 "kolkrabe",
+                 "eichelhäher",
+                 "fliegenpilz",
+                 "nein",
+                 "pfifferling",
+                 "ja",
+                 "eiche",
+                 "tümpel",
+                 "libelle",
+                 "schleuderzunge"];
 //var images = [{src: "images/frage0.jpg", scale: 3}, {src: "images/frage1.jpg", scale: 3}, {src: "images/frage3.jpg", scale: 3}];
 
 
@@ -116,8 +139,9 @@ function getMp3URL(filename) {
   return path;
 }
 
-function playSound() {
-      var media = new Media(getMp3URL("frage"+ aktuelleAufgabe + ".mp3"));
+function playSound(filename) {
+      media.stop();
+      media = new Media(getMp3URL(filename));
       media.play();
 }
 
@@ -137,15 +161,12 @@ function pruefeAntwort() {
     if (antworten[aktuelleAufgabe] != antwort.get("text").toLowerCase()) {
       // antwort falsch
       ergebnis.set("text","Das ist leider falsch!");
-      var media = new Media(getMp3URL("falsch.mp3"));
-      media.play();
+      playSound("falsch.mp3");
     } else {
       // antwort richtig
       ergebnis.set("text","Super, das ist richtig!");
       button.set("text","Weiter");
-      var media = new Media(getMp3URL("richtig.mp3"));
-      media.play();
-
+      playSound("richtig.mp3");
     }
   } 
 }
