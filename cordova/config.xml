@@ -45,11 +45,11 @@
     </platform>
  
     <platform name="android">
-        <icon src="android/mdpi/ic_launcher.png" density="mdpi" />
-        <icon src="android/hdpi/ic_launcher.png" density="hdpi" />
-        <icon src="android/xhdpi/ic_launcher.png" density="xhdpi" />
-        <icon src="android/xxhdpi/ic_launcher.png" density="xxhdpi" />
-        <icon src="android/xxxhdpi/ic_launcher.png" density="xxxhdpi" />
+        <icon src="android/mipmap-mdpi/ic_launcher.png" density="mdpi" />
+        <icon src="android/mipmap-hdpi/ic_launcher.png" density="hdpi" />
+        <icon src="android/mipmap-xhdpi/ic_launcher.png" density="xhdpi" />
+        <icon src="android/mipmap-xxhdpi/ic_launcher.png" density="xxhdpi" />
+        <icon src="android/mipmap-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
     </platform>
     
 	<access origin="*" />
