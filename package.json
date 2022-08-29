@@ -3,6 +3,6 @@
   "description": "Schnitzeljagd",
   "main": "app.js",
   "dependencies": {
-    "tabris": "1.9.0"
+    "tabris": "1.11.0"
   }
 }
